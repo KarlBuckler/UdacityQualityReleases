@@ -6,10 +6,10 @@ tenant_id = "8d4a1cff-cc1d-48ae-976c-3ec2ffb33aaa"
 
 # Resource Group/Location
 location = "Sweden Central"
-resource_group_name = "Assignement3"
+resource_group = "Assignement3"
 application_type = "myAssignementApplication"
 
 # Network
-virtual_network_name = ""
+virtual_network_name = "Assignement3Network"
 address_space = ["10.5.0.0/16"]
 address_prefix_test = "10.5.1.0/24"
