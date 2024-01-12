@@ -129,6 +129,14 @@ stages:
     #--------------------------------------------#
     # Selenium (UI) Test Suite - Archive the package  
     # "ArchiveFiles@2" picks up the web package and archives it.
+    
+    - task: CmdLine@2
+      displayName: Install zip
+      continueOnError: true
+      inputs:
+        script: 'sudo apt install zip'
+        workingDirectory: '$(System.DefaultWorkingDirectory)''
+
     - task: ArchiveFiles@2
       displayName: 'Archive UI Tests'
       inputs:
