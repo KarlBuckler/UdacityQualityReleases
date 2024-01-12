@@ -209,14 +209,24 @@ stages:
               script: |
                 sudo apt-get install openjdk-11-jre-headless -y
                 sudo apt-get install openjdk-11-jdk -y
+                
           - task: CmdLine@2
+            displayName: Run JMeter Stress Test
             inputs:
               script: |
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz"
                 tar -xf apache-jmeter-5.5.tgz
                 unzip -o $(Build.BuildId)-perftests.zip
-                ./apache-jmeter-5.5/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
-                cat jmeter.log                                                                           # ToDo: Write your commands
+                ./apache-jmeter-5.5/bin/jmeter -n -t StressTestSuite.jmx -j jmeterStress.log -f
+                cat jmeterStress.log                                             
+              workingDirectory: $(Pipeline.Workspace)/drop-perftests 
+
+          - task: CmdLine@2
+            displayName: Run JMeter Endurance Test
+            inputs:
+              script: |
+                ./apache-jmeter-5.5/bin/jmeter -n -t EnduranceTestSuite.jmx -j jmeterEndurance.log -f
+                cat jmeterEndurance.log                                  
               workingDirectory: $(Pipeline.Workspace)/drop-perftests 
               
 #  #--------------------------------------------#  
