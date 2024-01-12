@@ -204,6 +204,12 @@ stages:
           #--------------------------------------------#    
           # Run JMeter test suite against the App Service
           - task: CmdLine@2
+            displayName: Install java
+            inputs:
+            script: |
+              sudo apt-get install openjdk-11-jre-headless -y
+              sudo apt-get install openjdk-11-jdk -y
+          - task: CmdLine@2
             inputs:
               script: |
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz"
