@@ -118,15 +118,14 @@ stages:
         script: 'newman run TestSuite.Regression.json -e Test.environment.json --reporters cli,junit --reporter-junit-export TEST-Regression.xml'
         workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
     # Postman - Publish Results 
-    # ToDo: Complete the task as explained here: https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-test-results?view=azure-devops&tabs=trx%2Cyaml#yaml-snippet
-#    - task: PublishTestResults@2
-#      inputs:
-#        testResultsFormat: 'JUnit'
-#        testResultsFiles: '**/TEST-*.xml'
-#        searchFolder:       # ToDo
-#        mergeTestResults: true
-#        testRunTitle:       # ToDo
-#
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '**/TEST-*.xml'
+        searchFolder: '$(System.DefaultWorkingDirectory)'
+        mergeTestResults: true
+        testRunTitle: 'Regression and Data Validation Test'
+
 #    #--------------------------------------------#
 #    # Selenium (UI) Test Suite - Archive the package  
 #    # "ArchiveFiles@2" picks up the web package and archives it.
