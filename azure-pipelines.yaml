@@ -206,7 +206,7 @@ stages:
           - task: CmdLine@2
             inputs:
               script: |
-                wget "https://apache.mirrors.lucidnetworks.net//jmeter/binaries/apache-jmeter-5.2.1.tgz"
+                wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz"
                 tar -xf apache-jmeter-5.2.1.tgz
                 unzip -o $(Build.BuildId)-perftests.zip
                 ./apache-jmeter-5.2.1/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
