@@ -93,7 +93,10 @@ stages:
     - task: CmdLine@2
       displayName: Install Newman
       inputs:
-        script: 'sudo npm install -g newman'
+        script: | 
+                sudo apt-get update \
+                sudo apt-get install nodejs npm \
+                sudo npm install -g newman
         workingDirectory: $(System.DefaultWorkingDirectory)
     # Postman Data Validation Test Suite    
     # ToDo: Verify the working directory
