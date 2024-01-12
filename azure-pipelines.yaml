@@ -129,13 +129,13 @@ stages:
     #--------------------------------------------#
     # Selenium (UI) Test Suite - Archive the package  
     # "ArchiveFiles@2" picks up the web package and archives it.
-    
+
     - task: CmdLine@2
       displayName: Install zip
       continueOnError: true
       inputs:
         script: 'sudo apt install zip'
-        workingDirectory: '$(System.DefaultWorkingDirectory)''
+        workingDirectory: '$(System.DefaultWorkingDirectory)'
 
     - task: ArchiveFiles@2
       displayName: 'Archive UI Tests'
@@ -155,7 +155,7 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive FakeRestAPI'
       inputs:
-        rootFolderOrFile: 
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter/fakerestapi'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
@@ -169,7 +169,7 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive PerformanceTestSuite'
       inputs:
-        rootFolderOrFile: 
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter/test-suite'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip'
