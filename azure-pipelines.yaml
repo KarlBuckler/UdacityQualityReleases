@@ -199,7 +199,7 @@ stages:
             inputs:
               azureSubscription: $(azureServiceConnectionId)
               appName: $(webAppName)
-              appType: webApp
+              appType: webAppLinux
               package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip    
           #--------------------------------------------#    
           # Run JMeter test suite against the App Service
