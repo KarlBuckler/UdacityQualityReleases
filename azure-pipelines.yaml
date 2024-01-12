@@ -91,13 +91,11 @@ stages:
     # Postman - Install Newman    
     # ToDo: Update the command and verify the working directory
     - task: CmdLine@2
-      displayName: Install nodejs and npm
+      displayName: Install nodejs
       inputs:
         script: | 
-          sudo apt-get update
-          sudo apt-get install nodejs 
-          sudo apt-get install npm 
-          sudo n 18.17.1
+          curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash - &&\
+          sudo apt-get install -y nodejs
     - task: CmdLine@2
       displayName: Install Newman
       inputs:
