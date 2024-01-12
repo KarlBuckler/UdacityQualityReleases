@@ -15,7 +15,7 @@ variables:
   projectRoot: $(System.DefaultWorkingDirectory)
   # Environment name
   environmentName: 'Assignment3Env'
-  
+
     # Web app name
   webAppName: 'myAssignementApplication-AppService'
 
@@ -132,7 +132,6 @@ stages:
     #--------------------------------------------#
     # Selenium (UI) Test Suite - Archive the package  
     # "ArchiveFiles@2" picks up the web package and archives it.
-
     - task: CmdLine@2
       displayName: Install zip
       continueOnError: true
@@ -154,7 +153,6 @@ stages:
 
     #--------------------------------------------#    
     # FakeRestAPI - Archive
-    # ToDo: Complete the ArchiveFiles@2 task and publish step 
     - task: ArchiveFiles@2
       displayName: 'Archive FakeRestAPI'
       inputs:
@@ -168,7 +166,6 @@ stages:
 
     #--------------------------------------------#  
     # JMeter (Performance) Test Suite - Archive
-    # ToDo: Complete the ArchiveFiles@2 task and publish step 
     - task: ArchiveFiles@2
       displayName: 'Archive PerformanceTestSuite'
       inputs:
@@ -201,9 +198,9 @@ stages:
             displayName: 'Deploy Azure Web App'
             inputs:
               azureSubscription: $(azureServiceConnectionId)
-              appName: $(webAppName)               # ToDo
+              appName: $(webAppName)
               appType: webApp
-              package: $(Pipeline.Workspace)/<artifact>/<archiveFile>       # ToDo: Use the published zip artifact. 
+              package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip    
           #--------------------------------------------#    
           # Run JMeter test suite against the App Service
           - task: CmdLine@2
@@ -214,7 +211,7 @@ stages:
                 unzip -o $(Build.BuildId)-perftests.zip
                 ./apache-jmeter-5.2.1/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
                 cat jmeter.log                                                                           # ToDo: Write your commands
-              workingDirectory: $(Pipeline.Workspace)/<artifact>            # ToDo: Use the artifact name from the task above
+              workingDirectory: $(Pipeline.Workspace)/drop-perftests/$(Build.BuildId)-perftests.zip    
               
 #  #--------------------------------------------#  
 #  # Selenium | Functional UI Tests
