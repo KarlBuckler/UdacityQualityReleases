@@ -270,6 +270,7 @@ stages:
                 rm -rf $file | true
                 wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/120.0.6099.109/linux64/chrome-linux64.zip
                 unzip -o chromedriver_linux64.zip
+                rm -rf /usr/local/bin/chromedriver
                 sudo ln -sf $PWD/chromedriver /usr/local/bin/chromedriver
                 export PATH=$PATH:/home/testuser/app
                 echo "Starting Selenium Tests"
