@@ -269,6 +269,7 @@ stages:
                 unzip -o $(Build.BuildId)-uitests.zip
                 file="chrome-linux64.zip"
                 rm -rf $file | true
+                sudo rm -rf chromedriver | true
                 wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/120.0.6099.109/linux64/chrome-linux64.zip
                 unzip -o chrome-linux64.zip
                 sudo rm -rf /usr/local/bin/chromedriver
