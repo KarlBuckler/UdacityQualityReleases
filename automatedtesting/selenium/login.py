@@ -2,10 +2,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-import os
 import add_remove_from_cart
-
 
 # Start the browser and login with standard_user
 def login (user, password):
@@ -13,9 +10,7 @@ def login (user, password):
     # --uncomment when running in Azure DevOps.
     options = ChromeOptions()
     options.add_argument("--headless") 
-    service = Service()
-    driver = webdriver.Chrome(service=service, options=options)
-    # driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=options)
     print ('Browser started successfully. Navigating to the demo page to login.')
     driver.get('https://www.saucedemo.com/')
 
