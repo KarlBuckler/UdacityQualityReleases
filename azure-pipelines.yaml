@@ -260,6 +260,7 @@ stages:
                 pip3 install selenium
                 pip3 install webdriver-manager
                 cd $(Pipeline.Workspace)
+                echo $(Pipeline.Workspace)
                 DIR=$(Pipeline.Workspace)/app
                 if [ ! -d "$DIR" ]; then
                     mkdir app
