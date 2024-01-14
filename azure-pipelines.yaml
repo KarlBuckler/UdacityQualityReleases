@@ -258,6 +258,7 @@ stages:
                 sudo apt-get install unzip -y
                 sudo apt-get install -y chromium-browser
                 pip3 install selenium
+                pip3 install webdriver-manager
                 cd $(Pipeline.Workspace)
                 DIR=$(Pipeline.Workspace)/app
                 if [ ! -d "$DIR" ]; then
