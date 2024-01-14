@@ -17,7 +17,7 @@ def login (user, password):
     driver.get('https://www.saucedemo.com/')
 
     print('Starting login...')
-    print('input user and password')
+    print('Input username: ' + user +  ' and password: ' + password )
     driver.find_element(By.CSS_SELECTOR, "input[id='user-name']").send_keys(user)
     driver.find_element(By.CSS_SELECTOR, "input[id='password']").send_keys(password)
 
@@ -26,13 +26,15 @@ def login (user, password):
 
     print('find products label')
     products_label =  driver.find_element(By.CSS_SELECTOR, "div[id='header_container'] > .header_secondary_container > .title").text
-    assert "PRODUCTS" in products_label
+    assert "Products" in products_label
 
     print('Login successfully!')
     return driver
 
-
+print("---------------Run Login Test----------------")
 driver = login('standard_user', 'secret_sauce')
+print("------------Run Add Products Test------------")
 add_remove_from_cart.add_all_product(driver)
+print("----------Run Remove Products Test-----------")
 add_remove_from_cart.remove_product_from_cart(driver)
 print("Testing finish.")

@@ -9,19 +9,20 @@ def add_all_product(driver):
     products_count = len(driver.find_elements(By.CSS_SELECTOR, "div.inventory_item"))
     print("Product count: " + str(products_count))
 
-    print("Add all product to shopping cart")
+    print("Add products to shopping cart")
     numbOfProduct = 0
     while (numbOfProduct < products_count):
         productName = driver.find_element(By.CSS_SELECTOR, "a[id='item_" + str(numbOfProduct) + "_title_link'] > div.inventory_item_name").text
         productName = productName.replace(" ", "-").lower()
+        print("Add product:" + productName)
         driver.find_element(By.ID, "add-to-cart-" + productName).click()
         numbOfProduct = numbOfProduct + 1
 
     print("Product added: " + str(numbOfProduct))
-    print("click on shopping cart icon")
+    print("Click on shopping cart icon")
     driver.find_element(By.CSS_SELECTOR, "a.shopping_cart_link").click()
 
-    print("find and count product in shopping cart")
+    print("Find and count product in shopping cart")
     product_added = len(driver.find_elements(By.CLASS_NAME, "cart_item"))
     assert product_added == numbOfProduct
 
@@ -29,7 +30,7 @@ def add_all_product(driver):
 
 def remove_product_from_cart(driver):
 
-    print("find all item to remove from shopping cart")
+    print("Find all item to remove from shopping cart")
     products_count = len(driver.find_elements(By.CLASS_NAME, "cart_item"))
     print("Product count: " + str(products_count))
 
@@ -37,6 +38,7 @@ def remove_product_from_cart(driver):
     while (numbOfProduct < products_count):
         productName = driver.find_element(By.CSS_SELECTOR, "a[id='item_" + str(numbOfProduct) + "_title_link'] > div.inventory_item_name").text
         productName = productName.replace(" ", "-").lower()
+        print("Remove product:" + productName)
         driver.find_element(By.ID, "remove-" + productName).click()
         numbOfProduct = numbOfProduct + 1
 
