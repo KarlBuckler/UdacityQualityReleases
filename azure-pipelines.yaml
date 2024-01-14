@@ -199,9 +199,9 @@ stages:
             inputs:
               azureSubscription: $(azureServiceConnectionId)
               appName: $(webAppName)
-              appType: webAppLinux
+              appType: webApp
               package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
-              deploymentMethod: zipDeploy
+              deploymentMethod: auto
           #--------------------------------------------#    
           # Run JMeter test suite against the App Service
           - task: CmdLine@2
