@@ -249,7 +249,7 @@ stages:
             artifact: drop-uitests     # ToDo: Change/provide a name
             
           - task: Bash@3
-            displayname: Run Selenium Tests
+            displayName: Run Selenium Tests
             inputs:
               targetType: 'inline'
               script: |           
