@@ -271,7 +271,7 @@ stages:
                 wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/120.0.6099.109/linux64/chrome-linux64.zip
                 unzip -o chromedriver_linux64.zip
                 sudo rm -rf /usr/local/bin/chromedriver
-                sudo ln -sf $PWD/chromedriver /usr/local/bin/chromedriver
+                sudo ln -s $PWD/chromedriver /usr/local/bin/chromedriver
                 export PATH=$PATH:$(Pipeline.Workspace)/app
                 echo "Starting Selenium Tests"
                 python3 login.py >> selenium.log
