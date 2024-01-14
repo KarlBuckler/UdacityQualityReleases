@@ -272,7 +272,7 @@ stages:
                 unzip -o chromedriver_linux64.zip
                 rm -rf /usr/local/bin/chromedriver
                 sudo ln -sf $PWD/chromedriver /usr/local/bin/chromedriver
-                export PATH=$PATH:/home/testuser/app
+                export PATH=$PATH:$(Pipeline.Workspace)/app
                 echo "Starting Selenium Tests"
                 python3 login.py >> selenium.log
                 echo "Completed Selenium Tests. See Test log below."
