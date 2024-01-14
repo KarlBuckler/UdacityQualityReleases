@@ -2,8 +2,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
 import add_remove_from_cart
 
@@ -14,8 +13,8 @@ def login (user, password):
     # --uncomment when running in Azure DevOps.
     options = ChromeOptions()
     options.add_argument("--headless") 
-    driver = webdriver.Chrome(options=options,service=ChromeService(ChromeDriverManager(version='114.0.5735.90').install()))
-    # driver = webdriver.Chrome(options=options)
+    service = Service()
+    driver = webdriver.Chrome(service=service, options=options)
     # driver = webdriver.Chrome()
     print ('Browser started successfully. Navigating to the demo page to login.')
     driver.get('https://www.saucedemo.com/')
@@ -41,4 +40,5 @@ print("------------Run Add Products Test------------")
 add_remove_from_cart.add_all_product(driver)
 print("----------Run Remove Products Test-----------")
 add_remove_from_cart.remove_product_from_cart(driver)
+driver.quit()
 print("Testing finish.")
