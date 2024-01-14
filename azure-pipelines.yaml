@@ -279,4 +279,9 @@ stages:
                 python3 login.py >> selenium.log
                 echo "Completed Selenium Tests. See Test log below."
                 echo "$(<selenium.log)"
+
+          - task: PublishPipelineArtifact@1
+            inputs:
+              targetPath: '$(Pipeline.Workspace)/app/selenium.log'
+              artifactName: 'drop-uitests-logs'
                 
