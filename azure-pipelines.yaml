@@ -277,5 +277,5 @@ stages:
                 echo "Starting Selenium Tests"
                 python3 add_remove_from_cart.py >> selenium.log
                 echo "Completed Selenium Tests. See Test log below."
-                cat selenium.log
+                echo "$(<selenium.log)"
                 
